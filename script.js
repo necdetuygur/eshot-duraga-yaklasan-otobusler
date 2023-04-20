@@ -51,6 +51,8 @@ window.addEventListener("load", () => {
     Get(lsDurak);
     document.querySelector("#durak").value = lsDurak;
     document.querySelector("#durak").focus();
+  } else {
+    Get("");
   }
 
   let yenileSn = 15;
