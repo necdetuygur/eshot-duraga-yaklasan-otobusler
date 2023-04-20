@@ -1,4 +1,6 @@
-window.timer = null;
+window.getTimer = null;
+window.reloadTimer = null;
+
 const Get = (durak) => {
   localStorage.setItem("durak", durak);
   document.querySelector(
@@ -8,9 +10,9 @@ const Get = (durak) => {
     document.querySelector("#card-body").style.display = "block";
     document.querySelector("#card-footer").style.display = "none";
     try {
-      clearTimeout(window.timer);
+      clearTimeout(window.getTimer);
     } catch (error) {}
-    window.timer = setTimeout(async () => {
+    window.getTimer = setTimeout(async () => {
       let content = "";
       const fet = await fetch("https://esdyo.vercel.app/" + durak);
       const data = await fet.json();
@@ -42,7 +44,18 @@ const Get = (durak) => {
 };
 
 const Reload = () => {
-  window.top.location.reload();
+  try {
+    clearTimeout(window.reloadTimer);
+  } catch (error) {}
+  let yenileSn = 16;
+  document.querySelector("#btn-yenile").innerHTML = `Yenile`;
+  window.reloadTimer = setInterval(() => {
+    document.querySelector("#btn-yenile").innerHTML = `Yenile (${--yenileSn})`;
+    if (!yenileSn) {
+      Get(localStorage.getItem("durak"));
+      yenileSn = 16;
+    }
+  }, 1e3);
 };
 
 window.addEventListener("load", () => {
@@ -54,12 +67,5 @@ window.addEventListener("load", () => {
   } else {
     Get("");
   }
-
-  let yenileSn = 16;
-  setInterval(() => {
-    document.querySelector("#btn-yenile").innerHTML = `Yenile (${--yenileSn})`;
-    if (!yenileSn) {
-      Reload();
-    }
-  }, 1e3);
+  Reload();
 });
