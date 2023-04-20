@@ -46,16 +46,18 @@ const Reload = () => {
 };
 
 window.addEventListener("load", () => {
-  const lsDurak = localStorage.getItem("durak");
-  Get(lsDurak);
-  document.querySelector("#durak").value = lsDurak;
-  document.querySelector("#durak").focus();
+  const lsDurak = localStorage.getItem("durak") || false;
+  if (lsDurak) {
+    Get(lsDurak);
+    document.querySelector("#durak").value = lsDurak;
+    document.querySelector("#durak").focus();
+  }
 
-  // let yenileSn = 15;
-  // setInterval(() => {
-  //   document.querySelector("#btn-yenile").innerHTML = `Yenile (${--yenileSn})`;
-  //   if (!yenileSn) {
-  //     Reload();
-  //   }
-  // }, 1e3);
+  let yenileSn = 15;
+  setInterval(() => {
+    document.querySelector("#btn-yenile").innerHTML = `Yenile (${--yenileSn})`;
+    if (!yenileSn) {
+      Reload();
+    }
+  }, 1e3);
 });
