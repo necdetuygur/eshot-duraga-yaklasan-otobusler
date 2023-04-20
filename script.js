@@ -11,7 +11,7 @@ const Get = (durak) => {
     document.querySelector("#card-footer").style.display = "none";
     try {
       clearTimeout(window.getTimer);
-      clearTimeout(window.reloadTimer);
+      Reload();
     } catch (error) {}
     window.getTimer = setTimeout(async () => {
       let content = "";
