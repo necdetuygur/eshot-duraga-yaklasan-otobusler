@@ -74,10 +74,10 @@ window.addEventListener("load", () => {
   if (lsDurak) {
     Get(lsDurak);
     document.querySelector("#durak").value = lsDurak;
-    document.querySelector("#durak").focus();
   } else {
     Get("");
   }
+  document.querySelector("#durak").focus();
   Reload();
   RegisterSW();
 });
