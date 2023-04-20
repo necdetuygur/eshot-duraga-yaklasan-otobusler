@@ -54,7 +54,7 @@ const Reload = () => {
     document.querySelector("#btn-yenile").innerHTML = `Yenile (${--yenileSn})`;
     if (!yenileSn) {
       Get(localStorage.getItem("durak"));
-      yenileSn = 16;
+      Reload();
     }
   }, 1e3);
 };
