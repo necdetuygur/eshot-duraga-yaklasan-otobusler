@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Sofia Sans Semi Condensed:wght@200;300;400;500;600;700;800;900;1000&display=swap");
+
+html,
+body,
+table,
+tr,
+th,
+td,
+#durak,
+.btn,
+.navbar-brand {
+  font-family: "Sofia Sans Semi Condensed", sans-serif;
+  font-weight: 900;
+}
+
+body {
+  background-color: #ddd;
+}
+
+#durak {
+  background-color: transparent;
+  border: 0;
+  width: 100%;
+  padding: 10px;
+}
+
+::placeholder {
+  color: #000;
+  opacity: 1;
+  font-family: "Sofia Sans Semi Condensed", sans-serif;
+  font-weight: 900;
+}
+
+:-ms-input-placeholder {
+  color: #000;
+  font-family: "Sofia Sans Semi Condensed", sans-serif;
+  font-weight: 900;
+}
+
+::-ms-input-placeholder {
+  color: #000;
+  font-family: "Sofia Sans Semi Condensed", sans-serif;
+  font-weight: 900;
+}

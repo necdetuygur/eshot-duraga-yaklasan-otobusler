@@ -1,12 +1,65 @@
 <!DOCTYPE html>
 <html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eshot Durağa Yaklaşan Otobüsler</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>ESHOT Durağa Yaklaşan Otobüsler</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, interactive-widget=resizes-content"
+    />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="referrer" content="origin" />
+    <link rel="icon" sizes="192x192" href="favicon.ico" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href=".">ESHOT Durağa Yaklaşan Otobüsler</a>
+      </div>
+    </nav>
+    <div class="container mt-3">
+      <div class="card bg-secondary">
+        <div class="card-header p-0">
+          <input
+            id="durak"
+            type="text"
+            onkeyup="Get(this.value)"
+            placeholder="Durak numarası"
+          />
+        </div>
+        <div class="card-body p-0" id="card-body">
+          <button
+            class="btn btn-primary w-100"
+            onclick="Reload();"
+            id="btn-yenile"
+          >
+            Yenile
+          </button>
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Ad</th>
+                  <th>Otobüs</th>
+                  <th>Mesafe</th>
+                </tr>
+              </thead>
+              <tbody id="table-body">
+                <tr>
+                  <td colspan="3">Durak numarası giriniz!</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card-footer" id="card-footer"></div>
+      </div>
+    </div>
+  </body>
 </html>
