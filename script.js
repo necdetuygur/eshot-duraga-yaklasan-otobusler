@@ -55,7 +55,7 @@ window.addEventListener("load", () => {
     Get("");
   }
 
-  let yenileSn = 15;
+  let yenileSn = 16;
   setInterval(() => {
     document.querySelector("#btn-yenile").innerHTML = `Yenile (${--yenileSn})`;
     if (!yenileSn) {
