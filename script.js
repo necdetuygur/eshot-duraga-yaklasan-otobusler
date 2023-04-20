@@ -58,6 +58,17 @@ const Reload = () => {
   }, 1e3);
 };
 
+const RegisterSW = () => {
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register(
+      "https://necdetuygur.github.io/eshot-duraga-yaklasan-otobusler/sw.js",
+      {
+        scope: "https://necdetuygur.github.io/eshot-duraga-yaklasan-otobusler/",
+      }
+    );
+  }
+};
+
 window.addEventListener("load", () => {
   const lsDurak = localStorage.getItem("durak") || false;
   if (lsDurak) {
@@ -68,4 +79,5 @@ window.addEventListener("load", () => {
     Get("");
   }
   Reload();
+  RegisterSW();
 });
