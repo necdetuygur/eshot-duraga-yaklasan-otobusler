@@ -11,7 +11,6 @@ const Get = (durak) => {
     document.querySelector("#card-footer").style.display = "none";
     try {
       clearTimeout(window.getTimer);
-      Reload();
     } catch (error) {}
     window.getTimer = setTimeout(async () => {
       let content = "";
@@ -47,13 +46,13 @@ const Get = (durak) => {
 const Reload = () => {
   try {
     clearTimeout(window.reloadTimer);
+    Get(localStorage.getItem("durak"));
   } catch (error) {}
   let yenileSn = 16;
   document.querySelector("#btn-yenile").innerHTML = `Yenile`;
   window.reloadTimer = setInterval(() => {
     document.querySelector("#btn-yenile").innerHTML = `Yenile (${--yenileSn})`;
     if (!yenileSn) {
-      Get(localStorage.getItem("durak"));
       Reload();
     }
   }, 1e3);
