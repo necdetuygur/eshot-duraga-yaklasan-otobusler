@@ -53,6 +53,7 @@ const Get = (durakNo) => {
       PrintTable(data);
     }, 1e3);
   } else {
+    $("#durak-ad").innerHTML = "";
     $("#card-body").style.display = "none";
     $("#card-footer").style.display = "block";
     $("#card-footer").innerHTML = "Durak numarası giriniz!";
