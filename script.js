@@ -4,7 +4,7 @@ window.reloadTimer = null;
 const $ = (a) => document.querySelector(a);
 
 const Fetch = async (durakNo) => {
-  const host = "http://localhost/"; // "https://esdyo.vercel.app/";
+  const host = "https://esdyo.vercel.app/";
   const fet = await fetch(host + durakNo);
   const data = await fet.json();
   $("#loading").style.display = "none";
