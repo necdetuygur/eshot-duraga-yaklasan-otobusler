@@ -19,6 +19,7 @@ var URLS = [
   `${GHPATH}/assets/icons/icon-512x512.png`,
   `${GHPATH}/assets/icons/icon-72x72.png`,
   `${GHPATH}/assets/icons/icon-96x96.png`,
+  `${GHPATH}/assets/loading.gif`,
 ];
 
 //////////////////////////////////////

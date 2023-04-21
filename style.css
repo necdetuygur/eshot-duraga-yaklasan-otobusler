@@ -6,22 +6,33 @@ table,
 tr,
 th,
 td,
-#durak,
+#durak-no,
 .btn,
 .navbar-brand {
   font-family: "Sofia Sans Semi Condensed", sans-serif;
   font-weight: 900;
+  font-size: 1.11rem;
+  vertical-align: middle;
 }
 
 body {
   background-color: #ddd;
 }
 
-#durak {
-  background-color: transparent;
+.big {
+  font-size: 1.75rem !important;
+}
+
+.center {
+  vertical-align: middle !important;
+  text-align: center !important;
+}
+
+#durak-no {
+  background-color: #ffffff77;
   border: 0;
   width: 100%;
-  padding: 10px;
+  padding: 5px;
 }
 
 ::placeholder {
@@ -29,16 +40,19 @@ body {
   opacity: 1;
   font-family: "Sofia Sans Semi Condensed", sans-serif;
   font-weight: 900;
+  font-size: 1.11rem;
 }
 
 :-ms-input-placeholder {
   color: #000;
   font-family: "Sofia Sans Semi Condensed", sans-serif;
   font-weight: 900;
+  font-size: 1.11rem;
 }
 
 ::-ms-input-placeholder {
   color: #000;
   font-family: "Sofia Sans Semi Condensed", sans-serif;
   font-weight: 900;
+  font-size: 1.11rem;
 }

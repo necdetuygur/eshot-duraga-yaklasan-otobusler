@@ -1,57 +1,75 @@
 window.getTimer = null;
 window.reloadTimer = null;
 
-const Get = (durak) => {
-  localStorage.setItem("durak", durak);
-  document.querySelector(
-    "#table-body"
-  ).innerHTML = `<tr><td colspan="3" class="text-center">...</td></tr>`;
-  if (durak) {
-    document.querySelector("#card-body").style.display = "block";
-    document.querySelector("#card-footer").style.display = "none";
+const $ = (a) => document.querySelector(a);
+
+const Fetch = async (durakNo) => {
+  const host = "http://localhost/"; // "https://esdyo.vercel.app/";
+  const fet = await fetch(host + durakNo);
+  const data = await fet.json();
+  $("#loading").style.display = "none";
+  if (data.length) {
+    return data;
+  } else {
+    return false;
+  }
+};
+
+const PrintTable = (data) => {
+  let content = "";
+  if (data.length) {
+    $("#durak-ad").innerHTML = data[0].DurakAd;
+    data.forEach((r) => {
+      content += `
+        <tr>
+          <td>${ucwords(r.OtobusAd).split(" - ").join("<br />")}</td>
+          <td class="big center">${r.OtobusNo}</td>
+          <td class="big center">${r.Mesafe}</td>
+        </tr>
+      `;
+    });
+  } else {
+    $("#durak-ad").innerHTML = "";
+    content += `
+      <tr>
+        <td colspan="3">Durağa yaklaşan otobüs bulunmamaktadır.</td>
+      </tr>
+    `;
+  }
+  $("#table-body").innerHTML = content;
+};
+
+const Get = (durakNo) => {
+  $("#loading").style.display = "inline-block";
+  localStorage.setItem("durakNo", durakNo);
+  if (durakNo) {
+    $("#card-body").style.display = "block";
+    $("#card-footer").style.display = "none";
     try {
       clearTimeout(window.getTimer);
     } catch (error) {}
     window.getTimer = setTimeout(async () => {
-      let content = "";
-      const fet = await fetch("https://esdyo.vercel.app/" + durak);
-      const data = await fet.json();
-      if (data.length) {
-        data.forEach((r) => {
-          content += `
-            <tr>
-              <td>${r.ad}</td>
-              <td>${r.otobus}</td>
-              <td>${r.mesafe}</td>
-            </tr>
-          `;
-        });
-      } else {
-        content += `
-          <tr>
-            <td colspan="3">Durağa yaklaşan otobüs bulunmamaktadır.</td>
-          </tr>
-        `;
-      }
-      document.querySelector("#table-body").innerHTML = content;
+      const data = await Fetch(durakNo);
+      PrintTable(data);
     }, 1e3);
   } else {
-    document.querySelector("#card-body").style.display = "none";
-    document.querySelector("#card-footer").style.display = "block";
-    document.querySelector("#card-footer").innerHTML =
-      "Durak numarası giriniz!";
+    $("#card-body").style.display = "none";
+    $("#card-footer").style.display = "block";
+    $("#card-footer").innerHTML = "Durak numarası giriniz!";
   }
 };
 
 const Reload = () => {
   try {
     clearTimeout(window.reloadTimer);
-    Get(localStorage.getItem("durak"));
+    Get(localStorage.getItem("durakNo"));
   } catch (error) {}
   let yenileSn = 16;
-  document.querySelector("#btn-yenile").innerHTML = `Yenile`;
+  $("#btn-yenile").innerHTML = `Yenile`;
   window.reloadTimer = setInterval(() => {
-    document.querySelector("#btn-yenile").innerHTML = `Yenile (${--yenileSn})`;
+    if ($("#loading").style.display == "none") {
+      $("#btn-yenile").innerHTML = `Yenile (${--yenileSn})`;
+    }
     if (!yenileSn) {
       Reload();
     }
@@ -69,15 +87,26 @@ const RegisterSW = () => {
   }
 };
 
+function ucwords(str) {
+  strVal = "";
+  str = str.toLocaleLowerCase().split(" ");
+  for (let chr = 0; chr < str.length; chr++) {
+    strVal +=
+      str[chr].substring(0, 1).toLocaleUpperCase() +
+      str[chr].substring(1, str[chr].length) +
+      " ";
+  }
+  return strVal;
+}
+
 window.addEventListener("load", () => {
-  const lsDurak = localStorage.getItem("durak") || false;
+  const lsDurak = localStorage.getItem("durakNo") || false;
   if (lsDurak) {
-    Get(lsDurak);
-    document.querySelector("#durak").value = lsDurak;
+    $("#durak-no").value = lsDurak;
   } else {
     Get("");
   }
-  document.querySelector("#durak").focus();
+  $("#durak-no").focus();
   Reload();
   RegisterSW();
 });
