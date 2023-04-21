@@ -24,7 +24,10 @@ const PrintTable = (data) => {
         <tr>
           <td>${ucwords(r.OtobusAd).split(" - ").join("<br />")}</td>
           <td class="big center">${r.OtobusNo}</td>
-          <td class="big center">${r.Mesafe}</td>
+          <td class="center">
+            <div class="big">${r.Mesafe}</div>
+            <div>durak kaldı</div>
+          </td>
         </tr>
       `;
     });
