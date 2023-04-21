@@ -8,11 +8,7 @@ const Fetch = async (durakNo) => {
   const fet = await fetch(host + durakNo);
   const data = await fet.json();
   $("#loading").style.display = "none";
-  if (data.length) {
-    return data;
-  } else {
-    return false;
-  }
+  return data.length ? data : false;
 };
 
 const PrintTable = (data) => {
