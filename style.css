@@ -41,7 +41,7 @@ td,
 }
 
 ::placeholder {
-  color: #000;
+  color: #fff;
   opacity: 1;
   font-family: "Sofia Sans Semi Condensed", sans-serif;
   font-weight: 900;
@@ -49,14 +49,14 @@ td,
 }
 
 :-ms-input-placeholder {
-  color: #000;
+  color: #fff;
   font-family: "Sofia Sans Semi Condensed", sans-serif;
   font-weight: 900;
   font-size: 1.11rem;
 }
 
 ::-ms-input-placeholder {
-  color: #000;
+  color: #fff;
   font-family: "Sofia Sans Semi Condensed", sans-serif;
   font-weight: 900;
   font-size: 1.11rem;

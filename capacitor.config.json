@@ -1,0 +1,7 @@
+{
+  "appId": "com.meftuntech.edyo",
+  "appName": "ESHOT Durağa Yaklaşan Otobüsler",
+  "bundledWebRuntime": false,
+  "webDir": "./dist/",
+  "plugins": {}
+}
