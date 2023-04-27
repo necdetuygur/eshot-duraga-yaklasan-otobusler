@@ -15,10 +15,6 @@ td,
   vertical-align: middle;
 }
 
-body {
-  background-color: #eee;
-}
-
 .big {
   font-size: 1.95rem !important;
 }
@@ -35,11 +31,10 @@ body {
 
 .navbar,
 .card {
-  box-shadow: 0 0 10px #fff !important;
+  box-shadow: 0 0 10px #000 !important;
 }
 
 #durak-no {
-  background-color: #fff;
   border: 0;
   width: 100%;
   padding: 5px;
@@ -65,4 +60,8 @@ body {
   font-family: "Sofia Sans Semi Condensed", sans-serif;
   font-weight: 900;
   font-size: 1.11rem;
+}
+
+.btn {
+  border-radius: 0;
 }
